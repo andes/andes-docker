@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+ vapp:
+  image: andesnqn/vapp
+  container_name: andes_app
+  ports:
+    - "80:80" 
+  environment:
+    APP_KEY: '5gCYFZPp3dfA2m5UNElVkgRLFcFnlala'
+    MONGO_MAIN: 'andes_db:27017/andes'
+    MONGO_MPI: 'andes_db:27017/mpi'
+    MONGO_SNOMED: 'andes_db:27017/es-edition'
+    ELASTIC_HOST: 'andes_elastic:9200'
+ andes_db:  
+  image: mongo:3.4
+  container_name: andes_db
+  volumes:
+    - ./db/andes:/data/db
+  ports:
+    - "27017:27017" 
+ andes_kibana:
+    image: docker.elastic.co/kibana/kibana:5.5.1   
+    container_name: andes_kibana
+    ports:
+      - "5601:5601"
+    environment:
+      SERVER_NAME: kibana
+      SERVER_PORT: 5601
+      SEVER_HOST: localhost
+      ELASTICSEARCH_URL: http://andes_elastic:9200 
+ andes_elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
+    container_name: andes_elastic
+    environment:
+      - xpack.security.enabled=false
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - transport.host=127.0.0.1
+      - http.host=0.0.0.0
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    volumes:
+      - ./db/elastic:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"   
+
