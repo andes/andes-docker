@@ -4,35 +4,48 @@
 
 ## Demo
 
-Para realizar una demo de ANDES simplemente ejecutar los siguientes comando:
+¿Interesado en probar ANDES? Podés realizar una prueba rápida solamente con [Docker](https://www.docker.com/get-docker) instalado.
+
+Cloná el repositorio o descargar el archivo andes-demo.yml y ejecuta el siguiente comando:
+
 
 ```bash
 docker-compose -f andes-demo.yml up -d
-./seed.sh
 ```
 
-El script seed.sh es utilizado para llenar la base de datos de ANDES con datos iniciales. Solo debe ser ejecutado una vez. 
+Docker va a descargar de la nube todas las dependencias necesarias para realizar las pruebas. Por única vez, cuando el sistema ya esta corriendo, debes llenar la base de datos con algunos datos de ejemplo, para esto hay que ejecutar el script `seed.sh`.
 
-Una vez ejecutado los comando, navegar a la dirección http://localhost. 
+Por último, debes acceder a http://localhost desde tu navigador favorito. Usuario de acceso:
 
-Usuario de acceso:
  - DNI. 30000000
  - Password: Cualquiera
 
-**(Proximamente comandos para windows)**
 
-## Desarrollo
+## Desarrolladores
 
-Para desarrolladores, el archivo `arquitectura.yml` levanta toda la arquitectura necesaria para un desarrollo local (Mongo 3.4, ElasticSearch y Kibana). 
-También existe una versión `arquitectura-disk.yml`, la cuál crea las bases de datos en el disco local. 
+Para los desarrolladores de ANDES, el archivo `arquitectura.yml` levanta toda la arquitectura necesaria para poder desarrollar de forma local (Mongo 3.4, Elasticsearch y Kibana).  
+Otra opción es usar el archivo `arquitectura-disk.yml`, el cuál monta el directorio local para crear los directorios de las base de datos. 
 
 ```bash
 docker-compose -f arquitectura.yml up -d
-./seed.sh
 ```
 
-### Api y App
+Si no queremos arrancar de cero con los datos, se puede restaurar un dump de Mongo comprimido con el siguiente comando:
 
-Tanto la Api y la App se puede levantar con Docker para desarrollo. Cada repositorio incluye su Dockerfile y una lista de comandos útiles para su rápida implementación.
+```bash
+docker cp mongo-dump.gzip andes_db:/mongo-dump.gzip
+docker exec andes_db mongorestore --gzip --archive=/mongo-dump.gzip
+```
+
+Por último, tener en cuenta que cada servicio levante en su puerto por default. Así que para conectarse a cada uno, hay que usar la url __localhost__ y el puerto correspondiente:
+
+- __Mongo__: mongodb:localhost:27017
+- __Elasticsearch__: localhost:9200
+- __Kibana__: localhost:5601
+
+
+### Desarrollo Api y App
+
+También se puede usar Docker para correr la Api y la App para desarrollar. Cada repositorio incluye su Dockerfile y una lista de comandos útiles, que explican como utilizarlo. 
 
 
