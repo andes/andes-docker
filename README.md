@@ -2,6 +2,8 @@
 
 # ANDES Docker
 
+
+
 ## Demo
 
 ¿Interesado en probar ANDES? Podés realizar una prueba rápida solamente con [Docker](https://www.docker.com/get-docker) instalado.
@@ -37,7 +39,7 @@ docker cp mongo-dump.gzip andes_db:/mongo-dump.gzip
 docker exec andes_db mongorestore --gzip --archive=/mongo-dump.gzip
 ```
 
-Por último, tener en cuenta que cada servicio levante en su puerto por default. Así que para conectarse a cada uno, hay que usar la url __localhost__ y el puerto correspondiente:
+Por último, tener en cuenta que cada servicio corre en su puerto por default. Así que para conectarse a cada uno, hay que usar la url __localhost__ y el puerto correspondiente:
 
 - __Mongo__: mongodb:localhost:27017
 - __Elasticsearch__: localhost:9200
@@ -46,6 +48,8 @@ Por último, tener en cuenta que cada servicio levante en su puerto por default.
 
 ### Desarrollo Api y App
 
-También se puede usar Docker para correr la Api y la App para desarrollar. Cada repositorio incluye su Dockerfile y una lista de comandos útiles, que explican como utilizarlo. 
+También se puede usar Docker para correr la Api y la App para desarrollar. Cada repositorio incluye su Dockerfile y una lista de comandos útiles, que explican como utilizarlo. O ver este [manual](DOCKER.md). 
+
+
 
 
