@@ -1,7 +1,7 @@
 version: '2'
 
 services:
- vapp:
+ andes_vapp:
   image: andesnqn/vapp
   container_name: andes_app
   ports:
@@ -47,7 +47,7 @@ services:
       - velastic:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"   
-  andes_nginx:
+ andes_nginx:
     container_name: andes_nginx
     image: nginx
     volumes:
