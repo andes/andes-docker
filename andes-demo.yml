@@ -1,7 +1,7 @@
 version: '2'
 
 services:
- vapp:
+ andes_vapp:
   image: andesnqn/vapp
   container_name: andes_app
   ports:
