@@ -47,7 +47,7 @@ services:
       - velastic:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"   
-  andes_nginx:
+ andes_nginx:
     container_name: andes_nginx
     image: nginx
     volumes:
