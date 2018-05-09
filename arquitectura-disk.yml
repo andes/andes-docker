@@ -2,12 +2,12 @@ version: '2'
 
 services:
  andes_db:  
-  image: mongo:3.4
+  image: mongo:3.6
   container_name: andes_db
   volumes:
     - ./db/andes:/data/db
   ports:
-    - "27017:27017" 
+    - "27017:27017"    
  andes_kibana:
     image: blacktop/kibana:5.5
     container_name: andes_kibana
