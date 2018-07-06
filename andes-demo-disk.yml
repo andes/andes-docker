@@ -12,7 +12,7 @@ services:
     ELASTIC_HOST: 'andes_elastic:9200' 
 
  andes_db:  
-  image: mongo:3.4
+  image: mongo:3.6
   container_name: andes_db
   volumes:
     - ./db/andes:/data/db
