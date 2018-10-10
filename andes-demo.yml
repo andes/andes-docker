@@ -5,12 +5,13 @@ services:
   image: andesnqn/vapp
   container_name: andes_app
   ports:
-    - "80:80" 
+    - "81:80" 
   environment:
     APP_KEY: '5gCYFZPp3dfA2m5UNElVkgRLFcFnlala'
-    MONGO_MAIN: 'andes_db:27017/andes'
-    MONGO_MPI: 'andes_db:27017/mpi'
-    MONGO_SNOMED: 'andes_db:27017/es-edition'
+    MONGO_MAIN: 'mongodb://andes_db:27017/andes'
+    MONGO_MPI: 'mongodb://andes_db:27017/mpi'
+    MONGO_SNOMED: 'mongodb://andes_db:27017/es-edition'
+    MONGO_PUCO: 'mongodb://andes_db:27017/padrones'
     ELASTIC_HOST: 'andes_elastic:9200'
  andes_db:  
   image: mongo:3.6
@@ -53,7 +54,7 @@ services:
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - "81:81"
+      - "80:80"
   
 volumes:
   vandes:
