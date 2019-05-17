@@ -2,22 +2,13 @@ version: '2'
 
 services:
  andes:  
-  image: mongo:3.6
+  image: mongo:4.0
   container_name: andes
   volumes:
     - vandes:/data/db
   ports:
     - "27017:27017"
- andes_kibana:
-    image: blacktop/kibana:5.5  
-    container_name: andes_kibana
-    ports:
-      - "5601:5601"
-    environment:
-      SERVER_NAME: andes_kibana
-      SERVER_PORT: 5601
-      SEVER_HOST: localhost
-      ELASTICSEARCH_URL: http://andes_elastic:9200
+  entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
  andes_elasticsearch:
     image: blacktop/elasticsearch:5.5 
     container_name: andes_elastic

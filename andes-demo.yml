@@ -14,12 +14,13 @@ services:
     MONGO_PUCO: 'mongodb://andes_db:27017/padrones'
     ELASTIC_HOST: 'andes_elastic:9200'
  andes_db:  
-  image: mongo:3.6
+  image: mongo:4.0
   container_name: andes_db
   volumes:
     - vandes:/data/db
   ports:
-    - "27017:27017" 
+    - "27017:27017"
+  entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ] 
  andes_kibana:
     image: blacktop/kibana:5.5 
     container_name: andes_kibana
