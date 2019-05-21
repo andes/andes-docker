@@ -25,7 +25,7 @@ Por último, debes acceder a http://localhost desde tu navigador favorito. Usuar
 
 ## Desarrolladores
 
-Para los desarrolladores de ANDES, el archivo `arquitectura.yml` levanta toda la arquitectura necesaria para poder desarrollar de forma local (Mongo 3.4, Elasticsearch y Kibana).  
+Para los desarrolladores de ANDES, el archivo `arquitectura.yml` levanta toda la arquitectura necesaria para poder desarrollar de forma local (Mongo 4.0, Elasticsearch y Kibana).  
 Otra opción es usar el archivo `arquitectura-disk.yml`, el cuál monta el directorio local para crear los directorios de las base de datos. 
 
 ```bash
