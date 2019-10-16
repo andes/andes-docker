@@ -2,8 +2,6 @@
 
 # ANDES Docker
 
-
-
 ## Demo
 
 ¿Interesado en probar ANDES? Podés realizar una prueba rápida solamente con [Docker](https://www.docker.com/get-docker) instalado.
@@ -20,7 +18,7 @@ Docker va a descargar de la nube todas las dependencias necesarias para realizar
 Por último, debes acceder a http://localhost desde tu navigador favorito. Usuario de acceso:
 
  - DNI. 30000000
- - Password: Cualquiera
+ - Password: 123
 
 
 ## Desarrolladores
